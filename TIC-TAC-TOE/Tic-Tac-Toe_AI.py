@@ -94,7 +94,7 @@ def ai_move(grid: list[list[Button]]) -> tuple[int,int]:
         v: float = float("-inf")
         if terminal(state):
             return utility(state)
-        for action in actions(current_state):
+        for action in actions(state):
             v = max(v,min_value(result(state,(action,"X"))))
         return v
     
@@ -102,7 +102,7 @@ def ai_move(grid: list[list[Button]]) -> tuple[int,int]:
         v: float = float("inf")
         if terminal(state):
             return utility(state)
-        for action in actions(current_state):
+        for action in actions(state):
             v = min(v,max_value(result(state,(action,"O"))))
         return v
     
