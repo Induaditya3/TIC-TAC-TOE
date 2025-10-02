@@ -105,4 +105,8 @@ def ai_move(grid: list[list[Button]]) -> tuple[int,int]:
         for action in actions(state):
             v = min(v,max_value(result(state,(action,"O"))))
         return v
-    
+    # find out best move for minimizing player or 'O'
+    possible_actions:list[tuple[int,int]] = actions(current_state)
+    possible_val: list[float] = list(map(lambda xy: max_value(result(current_state,(xy,"O"))),possible_actions))
+    # The minimizing player picks action a in actions(s) that produces the lowest value of max_value(result(s, a))
+    return possible_actions[possible_val.index(min(possible_val))]
