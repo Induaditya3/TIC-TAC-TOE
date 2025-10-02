@@ -1,10 +1,11 @@
+from tictactoe_AI import ai_move
 #FUNCTION DEFINITIONS
 from tkinter import Button, Frame, Label, Tk
 # checks if game has ended or not 
 # returns False if not ended
 # returns True if someone won the game
 # returns "Tie" if game is tie
-# additionally colours the grid green if someone won
+# additionally colours the grid red if someone won that someone can only be AI
 # and yellows all the grid if it is a tie
 
 # need to make one variable global- current player
@@ -15,28 +16,28 @@ def check_winner(buttons): # buttons as a parameter intead of global
     # check horizontally for consecutive O's or X's
     for row in range(3):
         if buttons[row][0]['text'] == buttons[row][1]['text'] == buttons[row][2]['text'] != "":
-            buttons[row][0].config(bg="green")
-            buttons[row][1].config(bg="green")
-            buttons[row][2].config(bg="green")
+            buttons[row][0].config(bg="red")
+            buttons[row][1].config(bg="red")
+            buttons[row][2].config(bg="red")
             return True
     # check verically
     for column in range(3):
         if buttons[0][column]['text'] == buttons[1][column]['text'] == buttons[2][column]['text'] != "":
-            buttons[0][column].config(bg="green")
-            buttons[1][column].config(bg="green")
-            buttons[2][column].config(bg="green")
+            buttons[0][column].config(bg="red")
+            buttons[1][column].config(bg="red")
+            buttons[2][column].config(bg="red")
             return True
     # check main diagonal
     if buttons[0][0]['text'] == buttons[1][1]['text'] == buttons[2][2]['text'] != "":
-        buttons[0][0].config(bg="green")
-        buttons[1][1].config(bg="green")
-        buttons[2][2].config(bg="green")
+        buttons[0][0].config(bg="red")
+        buttons[1][1].config(bg="red")
+        buttons[2][2].config(bg="red")
         return True
     # check other diagonal
     elif buttons[0][2]['text'] == buttons[1][1]['text'] == buttons[2][0]['text'] != "":
-        buttons[0][2].config(bg="green")
-        buttons[1][1].config(bg="green")
-        buttons[2][0].config(bg="green")
+        buttons[0][2].config(bg="red")
+        buttons[1][1].config(bg="red")
+        buttons[2][0].config(bg="red")
         return True
     #if no winner is found
     elif empty_spaces(buttons=buttons) is False:
@@ -67,7 +68,7 @@ def next_turn(row,column, buttons,players,label): # buttons, player, players, la
         else:
             # ai's turn
             # get optimal move
-            # row,column = ai_move(buttons)
+            row,column = ai_move(buttons)
             buttons[row][column]['text']= current_player
             
             # here the input is being taken

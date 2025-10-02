@@ -9,6 +9,7 @@ def convert_state(grid: list[list[Button]])-> list[list[str]]:
        'X' means marked by human"""
     return [[grid[row][column]["text"] for column in range(3)] for row in range(3)]
 
+# redundant function - kept here for posterity
 def players(state:list[list[str]]) -> str:
     """Returns the whose turn it is
      'X' means human turn/ maximizing's turn
